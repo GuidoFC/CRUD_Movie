@@ -1,5 +1,6 @@
-C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\dao\MovieDao.java
-C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\model\Movie.java
-C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\MovieServlet.java
-C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\HelloServlet.java
-C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\dao\MovieDaoImpl.java
+C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\Importante\Interfaces\MovieDao.java
+C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\Importante\Interfaces\CRUD.java
+C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\Importante\Config\Conexion.java
+C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\Importante\Controlador\Controlador.java
+C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\Importante\Modelo\Movie.java
+C:\Users\Guido\Desktop\DAW2024_2025\DesenvWebServidor_ProfePere\2nExamen\primeraWeb\HelloDia24\src\main\java\principal\hellodia24\Importante\ModeloDAO\MovieDAO.java
