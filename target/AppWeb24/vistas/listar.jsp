@@ -16,7 +16,7 @@
 <body>
 <div>
     <h1>Peliculas</h1>
-    <table class="table table-bordered">
+    <table border="1">
         <thead>
         <tr>
             <th>ID</th>
@@ -40,6 +40,8 @@
             <td><%= per.getId()%>
             </td>
             <td><%= per.getTitle()%>
+            </td>
+            <td><%= per.getDescription()%>
             </td>
             <td><%= per.getYear()%>
             </td>

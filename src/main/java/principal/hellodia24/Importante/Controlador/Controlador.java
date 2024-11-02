@@ -5,18 +5,21 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
-import java.io.PrintWriter;
+import principal.hellodia24.Importante.Modelo.Movie;
+import principal.hellodia24.Importante.ModeloDAO.MovieDAO;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
-
+@WebServlet("/Controlador")
 public class Controlador extends HttpServlet {
 
-    String listar="vistas/listar.jsp";
-    String add="vistas/add.jsp";
-    String edit="vistas/edit.jsp";
+    String listar = "vistas/listar.jsp";
+    String add = "vistas/add.jsp";
+    String edit = "vistas/add.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -39,18 +42,20 @@ public class Controlador extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        String acceso="";
-        String action=request.getParameter("accion");
-        //
-        if(action.equalsIgnoreCase("listar")){
-            acceso=listar;
+        String action = request.getParameter("accion");
 
-        }
-        RequestDispatcher vista=request.getRequestDispatcher(acceso);
-        try {
-            vista.forward(request, response);
-        } catch (jakarta.servlet.ServletException e) {
-            throw new RuntimeException(e);
+        if ("listar".equalsIgnoreCase(action)) {
+            MovieDAO movieDAO = new MovieDAO();
+            List<Movie> listaPeliculas = movieDAO.listar(); // Método que devuelve la lista de películas
+            request.setAttribute("listaPeliculas", listaPeliculas);
+            RequestDispatcher vista = request.getRequestDispatcher(listar);
+            try {
+                vista.forward(request, response);
+            } catch (jakarta.servlet.ServletException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
     }
 
