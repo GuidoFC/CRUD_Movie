@@ -1,0 +1,5 @@
+principal\hellodia24\HelloServlet.class
+principal\hellodia24\dao\MovieDaoImpl.class
+principal\hellodia24\model\Movie.class
+principal\hellodia24\MovieServlet.class
+principal\hellodia24\dao\MovieDao.class
