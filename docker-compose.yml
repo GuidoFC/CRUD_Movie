@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
 #      nos conectaremos a la base de datos de movies
       MYSQL_DATABASE: movies
-      MYSQL_USER: pere
+      MYSQL_USER: pere2024
       MYSQL_PASSWORD: peredev
     ports:
       - "3308:3306"

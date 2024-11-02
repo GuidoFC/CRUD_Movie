@@ -31,8 +31,8 @@ public class MovieServlet extends HttpServlet {
 //        response.setContentType("text/html");: Configura el tipo de contenido de la respuesta como HTML.
         response.setContentType("text/html");
 //        31/10
-        Movie movieDao = new MovieDaoImpl();
-        request.setAttribute("pelis", movieDao.findAll());
+//        Movie movieDao = new MovieDaoImpl();
+//        request.setAttribute("pelis", movieDao.findAll());
         try {
             request.getRequestDispatcher("movies.jsp").forward(request, response);
         } catch (ServletException e) {
