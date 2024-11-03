@@ -27,6 +27,7 @@
         </tr>
         </thead>
         <%
+
             MovieDAO dao = new MovieDAO();
             List<Movie> list = dao.listar();
             Iterator<Movie> iter = list.iterator();

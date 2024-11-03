@@ -20,7 +20,7 @@ public class MovieDAO implements CRUD {
 
 
     @Override
-    public List listar() {
+    public List<Movie> listar() {
         ArrayList<Movie> list = new ArrayList<>();
         String sql = "select * from movies";
         try {
