@@ -1,8 +1,6 @@
+principal\hellodia24\Importante\Modelo\Movie.class
 principal\hellodia24\Importante\Controlador\MovieServlet.class
 principal\hellodia24\Importante\Modelo\MovieService.class
-principal\hellodia24\Importante\Controlador\Controlador.class
-principal\hellodia24\Importante\ModeloDAO\MovieDAO.class
-principal\hellodia24\Importante\Modelo\Movie.class
-principal\hellodia24\Importante\Interfaces\MovieDao.class
 principal\hellodia24\Importante\Interfaces\CRUD.class
+principal\hellodia24\Importante\ModeloDAO\MovieDAO.class
 principal\hellodia24\Importante\Config\Conexion.class

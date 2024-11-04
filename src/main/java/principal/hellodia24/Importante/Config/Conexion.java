@@ -8,6 +8,7 @@ public class Conexion {
 
     public Conexion() {
         try {
+//            Este controlador permite que Java se conecte a bases de datos MySQL.
             Class.forName("com.mysql.cj.jdbc.Driver");
 //            Crea una conexión a la base de datos movies usando el usuario root y la contraseña root
             con = DriverManager.getConnection("jdbc:mysql://db:3306/movies", "root", "root");

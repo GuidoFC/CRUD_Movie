@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Estoy en movie-record</h1>
-
+<a href="movie?accion=crearPelicula" >Añadir película</a>
 <table border="1">
     <thead>
     <tr>
@@ -22,16 +22,16 @@
     <%
         if (request.getAttribute("listaPeliculas") != null) {
             List<Movie> listaPeliculas = (List<Movie>) request.getAttribute("listaPeliculas");
-            for (Movie per : listaPeliculas) {
+            for (Movie movie : listaPeliculas) {
     %>
     <tr>
-        <td><%= per.getId() %></td>
-        <td><%= per.getTitle() %></td>
-        <td><%= per.getDescription() %></td>
-        <td><%= per.getYear() %></td>
+        <td><%= movie.getId() %></td>
+        <td><%= movie.getTitle() %></td>
+        <td><%= movie.getDescription() %></td>
+        <td><%= movie.getYear() %></td>
         <td>
-            <a class="btn btn-warning" href="Controlador?accion=editar&id=<%= per.getId() %>">Editar</a>
-            <a class="btn btn-danger" href="Controlador?accion=eliminar&id=<%= per.getId() %>">Remove</a>
+            <a  href="?accion=editar&id=<%= movie.getId() %>">Editar</a>
+            <a  href="?accion=eliminar&id=<%= movie.getId() %>">Remove</a>
         </td>
     </tr>
     <%

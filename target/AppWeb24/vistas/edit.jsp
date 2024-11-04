@@ -23,7 +23,7 @@
             Movie p = (Movie) dao.list(id);
         %>
         <h1>Modificar Pelicula</h1>
-        <form action="Controlador">
+        <form action="/movie?accion=actualizar" method="post">
             Titulo:<br>
             <input type="text" name="txtDni" value="<%= p.getTitle()%>"><br>
             Descripcion: <br>

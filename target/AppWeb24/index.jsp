@@ -9,8 +9,9 @@
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 <div>
-    <!-- Enlace directo a listar.jsp -->
-    <a href="vistas/listar.jsp">Listar Peliculas</a>
+
+<%--    Creo que deberia ir al MovieSERVLET --%>
+    <a href="movie">Listar Peliculas</a>
 </div>
 </body>
 </html>
