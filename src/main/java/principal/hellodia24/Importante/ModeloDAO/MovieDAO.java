@@ -1,7 +1,7 @@
 package principal.hellodia24.Importante.ModeloDAO;
 
 import principal.hellodia24.Importante.Config.Conexion;
-import principal.hellodia24.Importante.Interfaces.CRUD;
+import principal.hellodia24.Importante.Interfaces.CRUD_Movie;
 import principal.hellodia24.Importante.Modelo.Movie;
 
 import java.sql.Connection;
@@ -14,7 +14,7 @@ import java.util.List;
 //MovieDAO en tu aplicación se encarga de todas las operaciones relacionadas con la base de datos para las películas.
 //Gracias a MovieDAO, otras partes de la aplicación pueden interactuar con los datos de las películas sin preocuparse de los detalles técnicos de la base de datos
 
-public class MovieDAO implements CRUD {
+public class MovieDAO implements CRUD_Movie {
     // realizar la conexion con la BD
     Conexion cn = new Conexion();
     Connection con;
@@ -54,20 +54,10 @@ public class MovieDAO implements CRUD {
         return null;
     }
 
-    @Override
-    public boolean add(Movie movie) {
-        return false;
-    }
 
-    @Override
-    public Movie edit(Movie movie) {
-        return null;
-    }
 
-    @Override
-    public boolean eliminar(int id) {
-        return false;
-    }
+
+
 
     @Override
     public Movie getMovieByID(Long id) {

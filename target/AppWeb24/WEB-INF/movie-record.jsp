@@ -8,6 +8,7 @@
 <body>
 <h1>Estoy en movie-record</h1>
 <a href="movie?accion=crearPelicula" >Añadir película</a>
+<br>
 <table border="1">
     <thead>
     <tr>

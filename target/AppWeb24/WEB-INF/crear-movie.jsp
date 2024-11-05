@@ -14,6 +14,7 @@
 <div class="container">
     <div class="col-lg-6">
 
+<%--        No se puede acceder a la carperta WEB-INF, solo se puede acceder aqui con un Serlet--%>
         <h1>Crear una Película</h1>
 
         <form action="movie?accion=crearPeliculaNueva" method="post">
