@@ -22,7 +22,7 @@
 <div style="color: blue;">
     <p>Nombre:  <%= name %>
     </p>
-    <p>Email :<%= email %>
+    <p>Email: <%= email %>
     </p>
 </div>
 <%

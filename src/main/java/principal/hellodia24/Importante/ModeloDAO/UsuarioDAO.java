@@ -23,14 +23,13 @@ public class UsuarioDAO implements CRUD_User {
 
     @Override
     public void crearUsuarioBD(Usuario crearUsuario) {
-        String sql = "INSERT INTO usuarios (id, nombre, email, contraseña) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO usuarios ( nombre, email, contrasena) VALUES ( ?, ?, ?)";
         try {
             con = cn.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setInt(1, crearUsuario.getId());
-            ps.setString(2, crearUsuario.getNombre());
-            ps.setString(3, crearUsuario.getEmail());
-            ps.setString(4, crearUsuario.getContrasena());
+            ps.setString(1, crearUsuario.getNombre());
+            ps.setString(2, crearUsuario.getEmail());
+            ps.setString(3, crearUsuario.getContrasena());
 
             // Ejecuta la inserción
             ps.executeUpdate();
@@ -67,6 +66,7 @@ public class UsuarioDAO implements CRUD_User {
 
     @Override
     public int obtenerUltimoID() {
+        // TODO no necesario porque mi Campo ID es AUTOINCREMENTAL
 
         int ultimoId = -5;
 //        De esta forma tenemos el ultimo ID

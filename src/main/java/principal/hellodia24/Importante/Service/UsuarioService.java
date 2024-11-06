@@ -22,11 +22,9 @@ public class UsuarioService {
         return usuarioDAO.existeEmailEnUsuarios(email);
     }
 
-    public int crearUsuario(Usuario usuario) {
+    public void crearUsuario(Usuario usuario) {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
-        int ultimoID = usuarioDAO.obtenerUltimoID();
-        usuario.setId(ultimoID + 1);
         usuarioDAO.crearUsuarioBD(usuario);
-        return ultimoID + 1;
+
     }
 }

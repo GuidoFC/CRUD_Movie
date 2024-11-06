@@ -57,7 +57,7 @@ public class UsuarioServlet extends HttpServlet {
             String contrasenaCifrada = UsuarioService.hashPassword(password);
             usuario.setContrasena(contrasenaCifrada); // Asegúrate de cifrar la contraseña antes de guardarla
 
-            int ultimoid = usuarioService.crearUsuario(usuario);
+            usuarioService.crearUsuario(usuario);
             // Guarda los datos en la sesión en lugar de la solicitud
             // de esta forma los datos
             request.getSession().setAttribute("name", name);
