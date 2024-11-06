@@ -16,13 +16,27 @@
 
         <h1>Iniciar Sesión</h1>
 
-        <!-- Mostrar mensaje de error si existe -->
+        <!-- Mostrar mensaje de error si existe de Email-->
+
         <%
-            String errorMessage = (String) request.getAttribute("error204");
-            if (errorMessage != null) {
+            String errorEmail = (String) request.getAttribute("errorEmail");
+
+            if (errorEmail != null) {
         %>
         <div style="color: red;">
-            <%= errorMessage %>
+            <%= errorEmail %>
+        </div>
+        <%
+            }
+        %>
+        <!-- Mostrar mensaje de error si existe de Contraseña-->
+        <%
+            String errorContra = (String) request.getAttribute("errorContra");
+
+            if (errorContra != null) {
+        %>
+        <div style="color: red;">
+            <%= errorContra %>
         </div>
         <%
             }

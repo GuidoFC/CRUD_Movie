@@ -22,7 +22,7 @@ public class UsuarioDAO implements CRUD_User {
 
 
     @Override
-    public void crearUsuario(Usuario crearUsuario) {
+    public void crearUsuarioBD(Usuario crearUsuario) {
         String sql = "INSERT INTO usuarios (id, nombre, email, contraseña) VALUES (?, ?, ?, ?)";
         try {
             con = cn.getConnection();
@@ -39,7 +39,14 @@ public class UsuarioDAO implements CRUD_User {
         } catch (Exception e) {
             e.printStackTrace(); // Muestra el error en la consola si ocurre una excepción
         } finally {
-            // Cierra los recursos (ps, con) para evitar fugas de memoria
+            // Cierra los recursos (rs, ps, con) para evitar fugas de memoria
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -63,7 +70,7 @@ public class UsuarioDAO implements CRUD_User {
 
         int ultimoId = -5;
 //        De esta forma tenemos el ultimo ID
-        String sql = "SELECT MAX(id) AS max_id25 FROM movies";
+        String sql = "SELECT MAX(id) AS max_id25 FROM usuarios";
 
         try {
             con = cn.getConnection();
@@ -78,6 +85,13 @@ public class UsuarioDAO implements CRUD_User {
             e.printStackTrace();
         } finally {
             // Cierra los recursos (rs, ps, con) para evitar fugas de memoria
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return ultimoId;
     }

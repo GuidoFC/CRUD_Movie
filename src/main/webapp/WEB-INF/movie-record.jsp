@@ -6,9 +6,28 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Estoy en movie-record</h1>
-<a href="movie?accion=crearPelicula" >Añadir película</a>
+<h1>Estoy en movie-record!!</h1>
+<a href="movie?accion=crearPelicula">Añadir película</a>
 <br>
+<br>
+
+<!-- Mostrar mensaje de error si existe de Email-->
+
+<%
+    String name = (String) request.getSession().getAttribute("name");
+    String email = (String) request.getSession().getAttribute("email");
+
+    if (name != null) {
+%>
+<div style="color: blue;">
+    <p>Nombre:  <%= name %>
+    </p>
+    <p>Email :<%= email %>
+    </p>
+</div>
+<%
+    }
+%>
 <table border="1">
     <thead>
     <tr>
@@ -26,13 +45,17 @@
             for (Movie movie : listaPeliculas) {
     %>
     <tr>
-        <td><%= movie.getId() %></td>
-        <td><%= movie.getTitle() %></td>
-        <td><%= movie.getDescription() %></td>
-        <td><%= movie.getYear() %></td>
+        <td><%= movie.getId() %>
+        </td>
+        <td><%= movie.getTitle() %>
+        </td>
+        <td><%= movie.getDescription() %>
+        </td>
+        <td><%= movie.getYear() %>
+        </td>
         <td>
-            <a  href="?accion=editar&id=<%= movie.getId() %>">Editar</a>
-            <a  href="?accion=eliminar&id=<%= movie.getId() %>">Remove</a>
+            <a href="?accion=editar&id=<%= movie.getId() %>">Editar</a>
+            <a href="?accion=eliminar&id=<%= movie.getId() %>">Remove</a>
         </td>
     </tr>
     <%

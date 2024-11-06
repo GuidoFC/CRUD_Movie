@@ -44,49 +44,62 @@ public class UsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("accion");
 
-        if ("crearUsuarioNuevo".equals(action)) {
+        if ("FormulariocrearUsuario".equals(action)) {
             String name = request.getParameter("txtName");
             String email = request.getParameter("txtEmail");
             String password = request.getParameter("txtPassword");
 
             Usuario usuario = new Usuario();
+
             usuario.setNombre(name);
             usuario.setEmail(email);
             // cirframos la contraseña
             String contrasenaCifrada = UsuarioService.hashPassword(password);
             usuario.setContrasena(contrasenaCifrada); // Asegúrate de cifrar la contraseña antes de guardarla
 
-            usuarioService.crearUsuario(usuario);
+            int ultimoid = usuarioService.crearUsuario(usuario);
+            // Guarda los datos en la sesión en lugar de la solicitud
+            // de esta forma los datos
+            request.getSession().setAttribute("name", name);
+            request.getSession().setAttribute("email", email);
+
+
             response.sendRedirect("movie"); // Redirige al listado de Peliculas
         } else if ("IniciarSesion".equals(action)) {
             // cogemos los 2 parametros
             String email = request.getParameter("txtEmail");
-            String password = request.getParameter("txtPassword");
+            String contrasenaSinCifrar = request.getParameter("txtPassword");
 
             // comprobamos si existe el email
-//            if(!UsuarioService.existeEmail(email)){
+            if(!UsuarioService.existeEmail(email)){
             // Si el email no existe, añadimos un mensaje de error al request
                 // es una llave valor: la llave es "error204"
-                request.setAttribute("error204", "El correo ingresado no es correcto. Intente de nuevo.");
+                request.setAttribute("errorEmail", "El correo ingresado no es correcto. Intente de nuevo.");
 
                 // Reenviamos la solicitud a login-user.jsp
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login-user.jsp");
                 dispatcher.forward(request, response);
-//            }
+            }
 
 
 
             // comprobamos si la contraseña es correcta
-//            String contrasenaCifrada = UsuarioService.hashPassword(password);
-//            if( UsuarioService.checkPassword(password, contrasenaCifrada)){
-//
-//            }
+            String contrasenaCifrada = UsuarioService.hashPassword(contrasenaSinCifrar);
+            if(!UsuarioService.checkPassword(contrasenaSinCifrar, contrasenaCifrada)){
+                request.setAttribute("errorContra", "La contraseña no es correcta. Intente de nuevo.");
+
+                // Reenviamos la solicitud a login-user.jsp
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login-user.jsp");
+                dispatcher.forward(request, response);
+
+            }
             // if tod_o es correcto necesitamos el email y nombre
 //            Usuario usuario = new Usuario();
 //            usuario.setEmail(email);
 //            usuario.setContrasena(contrasenaCifrada);
 
-            response.sendRedirect("movie"); // Redirige al listado de Peliculas
+            // Si el usuario existe Redirige al listado de Peliculas
+//            response.sendRedirect("movie");
 
         }
     }

@@ -14,18 +14,18 @@
 <div class="container">
     <div class="col-lg-6">
 
-        <h1>Crear un Usuario</h1>
+        <h1>Crear un Usuario: </h1>
 
 
 
-        <form action="usuario?accion=crearUsuarioNuevo" method="post">
+        <form action="usuario?accion=FormulariocrearUsuario" method="post">
             Nombre:<br>
             <input class="form-control" type="text" name="txtName" required><br>
 
-            Email:<br>
+            Introduce tu Email:<br>
             <input class="form-control" type="email" name="txtEmail" required><br>
 
-            Contraseña:<br>
+            Introduce tu Contraseña:<br>
             <input class="form-control" type="password" name="txtPassword" required><br>
 
             <input class="btn btn-primary" type="submit" name="accion" value="crear">
