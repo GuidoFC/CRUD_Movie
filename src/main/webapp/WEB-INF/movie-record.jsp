@@ -16,6 +16,7 @@
 <%
     String name = (String) request.getSession().getAttribute("name");
     String email = (String) request.getSession().getAttribute("email");
+    String contrasena = (String) request.getSession().getAttribute("contrasena");
 
     if (name != null) {
 %>
@@ -23,6 +24,8 @@
     <p>Nombre:  <%= name %>
     </p>
     <p>Email: <%= email %>
+    </p>
+    <p>contrasena es: <%= contrasena %>
     </p>
 </div>
 <%

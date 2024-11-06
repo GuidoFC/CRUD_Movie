@@ -66,7 +66,7 @@ public class UsuarioServlet extends HttpServlet {
 
             response.sendRedirect("movie"); // Redirige al listado de Peliculas
         } else if ("IniciarSesion".equals(action)) {
-            // cogemos los 2 parametros
+            // Obtenemos los parámetros del formulario de inicio de sesión
             String email = request.getParameter("txtEmail");
             String contrasenaSinCifrar = request.getParameter("txtPassword");
 
@@ -79,27 +79,30 @@ public class UsuarioServlet extends HttpServlet {
                 // Reenviamos la solicitud a login-user.jsp
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login-user.jsp");
                 dispatcher.forward(request, response);
+                return; // Terminamos la ejecución
             }
 
+            // Obtenemos al usuario de la base de datos para comprobar la contraseña
+            Usuario usuario = UsuarioService.obtenerUsuarioPorEmail(email);
 
-
-            // comprobamos si la contraseña es correcta
-            String contrasenaCifrada = UsuarioService.hashPassword(contrasenaSinCifrar);
-            if(!UsuarioService.checkPassword(contrasenaSinCifrar, contrasenaCifrada)){
+            // Comprobamos si la contraseña es correcta usando BCrypt
+            // tenemos que coger la contraseña que esta en la base de datos!!!!
+            if (!UsuarioService.checkPassword(contrasenaSinCifrar, usuario.getContrasena())) {
                 request.setAttribute("errorContra", "La contraseña no es correcta. Intente de nuevo.");
 
                 // Reenviamos la solicitud a login-user.jsp
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login-user.jsp");
                 dispatcher.forward(request, response);
-
+                return; // Terminamos la ejecución
             }
-            // if tod_o es correcto necesitamos el email y nombre
-//            Usuario usuario = new Usuario();
-//            usuario.setEmail(email);
-//            usuario.setContrasena(contrasenaCifrada);
 
-            // Si el usuario existe Redirige al listado de Peliculas
-//            response.sendRedirect("movie");
+            // Si todo es correcto, guardamos la información del usuario en la sesión
+            request.getSession().setAttribute("name", usuario.getNombre());
+            request.getSession().setAttribute("email", usuario.getEmail());
+            request.getSession().setAttribute("contrasena", usuario.getContrasena());
+
+            // Redirigimos al listado de Peliculas
+            response.sendRedirect("movie");
 
         }
     }

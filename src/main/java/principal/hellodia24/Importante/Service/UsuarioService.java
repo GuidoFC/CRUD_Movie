@@ -22,6 +22,11 @@ public class UsuarioService {
         return usuarioDAO.existeEmailEnUsuarios(email);
     }
 
+    public static Usuario obtenerUsuarioPorEmail(String email) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        return usuarioDAO.getUsuarioPorEmail(email);
+    }
+
     public void crearUsuario(Usuario usuario) {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarioDAO.crearUsuarioBD(usuario);

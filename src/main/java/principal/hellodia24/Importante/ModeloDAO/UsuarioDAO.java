@@ -128,5 +128,35 @@ public class UsuarioDAO implements CRUD_User {
         return existe;
     }
 
+    public Usuario getUsuarioPorEmail(String email) {
+        Usuario usuario = null;
+        String sql = "SELECT * FROM usuarios WHERE email = ?";
+
+        try {
+            con = cn.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, email);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setNombre(rs.getString("nombre"));
+                usuario.setEmail(rs.getString("email"));
+                usuario.setContrasena(rs.getString("contrasena")); // La contraseña ya está cifrada en la BD
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+                if (con != null) con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return usuario;
+    }
 }
 
