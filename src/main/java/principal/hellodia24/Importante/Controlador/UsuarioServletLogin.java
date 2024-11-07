@@ -16,20 +16,17 @@ import java.io.IOException;
         urlPatterns = "/usuarioLogin"
 )
 public class UsuarioServletLogin extends HttpServlet {
-    private UsuarioService usuarioService = new UsuarioService();
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String action = request.getParameter("accion");
-
-        if ("IniciarSesion".equals(action)) {
             // Muestra el formulario para iniciar sesion
             RequestDispatcher dispatcher = request.getRequestDispatcher(
                     "/WEB-INF/login-user.jsp");
             dispatcher.forward(request, response);
-        }
+
 
 
     }
@@ -39,14 +36,14 @@ public class UsuarioServletLogin extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("accion");
 
-         if ("IniciarSesion".equals(action)) {
+        if ("IniciarSesion".equals(action)) {
             // Obtenemos los parámetros del formulario de inicio de sesión
             String email = request.getParameter("txtEmail");
             String contrasenaSinCifrar = request.getParameter("txtPassword");
 
             // comprobamos si existe el email
-            if(!UsuarioService.existeEmail(email)){
-            // Si el email no existe, añadimos un mensaje de error al request
+            if (!UsuarioService.existeEmail(email)) {
+                // Si el email no existe, añadimos un mensaje de error al request
                 // es una llave valor: la llave es "error204"
                 request.setAttribute("errorEmail", "El correo ingresado no es correcto. Intente de nuevo.");
 
@@ -78,7 +75,7 @@ public class UsuarioServletLogin extends HttpServlet {
             // Si to_do es correcto, guardamos la información del usuario en la sesión
             request.getSession().setAttribute("name", usuario.getNombre());
             request.getSession().setAttribute("email", usuario.getEmail());
-            request.getSession().setAttribute("contrasena", usuario.getContrasena());
+
 
             // Redirigimos al listado de Peliculas
             response.sendRedirect("litarTodasPeliculas");

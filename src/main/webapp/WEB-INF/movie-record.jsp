@@ -28,13 +28,17 @@
 
 </div>
 <div>
-    <a> Cerrar Session. Falta implementar logica</a>
+    <a href="cerrarSesion"> Cerrar Session</a>
     <br>
-    <a href="/AppWeb24">Regresar al index</a>
+    <br>
+
 </div>
 <%
     }
 %>
+<br>
+<br>
+<a href="/AppWeb24">Regresar al index</a>
 <table border="1">
     <thead>
     <tr>

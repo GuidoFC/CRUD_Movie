@@ -57,6 +57,7 @@ public class UsuarioServletCrearUsuario extends HttpServlet {
             // de esta forma los datos
 
             request.getSession().setAttribute("email", email);
+            request.getSession().setAttribute("name", usuario.getNombre());
 
 
             response.sendRedirect("litarTodasPeliculas"); // Redirige al listado de Peliculas
