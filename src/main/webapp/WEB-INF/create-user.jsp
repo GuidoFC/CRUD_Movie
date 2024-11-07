@@ -29,9 +29,10 @@
             <input class="form-control" type="password" name="txtPassword" required><br>
 
             <input class="btn btn-primary" type="submit" name="accion" value="crear">
-            <a href="mo">Regresar al index</a>
+            <a href="/AppWeb24">Regresar al index</a>
         </form>
     </div>
+
 </div>
 </body>
 

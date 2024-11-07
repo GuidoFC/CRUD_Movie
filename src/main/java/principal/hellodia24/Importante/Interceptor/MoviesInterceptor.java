@@ -17,13 +17,13 @@ public class MoviesInterceptor implements Filter {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
 
         System.out.println("Estoy en MoviesInterceptor");
-        System.out.println(httpRequest.getContextPath() + "/WEB-INF/login-user.jsp");
-        System.out.println("la ruta");
+
         HttpSession session = httpRequest.getSession(false);
         boolean loggedIn = (session != null && session.getAttribute("user") != null);
 
         // Si no está autenticado, redirigir a la página de inicio de sesión
         if (!loggedIn) {
+            // TODO cuando uso el sendRedirect() tengo que poner la ruta sin la "/"
             httpResponse.sendRedirect("usuario?accion=IniciarSesion");
         } else {
             chain.doFilter(request, response);

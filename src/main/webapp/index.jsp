@@ -20,7 +20,7 @@
     <a href="usuario?accion=crearUsuarioNuevo">Crear un usuario</a>
     <br>
     <br>
-    <a href="usuario?accion=IniciarSesion">Iniciar Sesión</a>
+    <a href="movie?accion=IniciarSesion">Iniciar Sesión</a>
     <br>
     <br>
 </div>

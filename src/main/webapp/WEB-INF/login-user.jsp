@@ -67,9 +67,13 @@
             />
             <br/>
             <br/>
-            <a href="mo">Regresar al index</a>
+            <a href="usuario?accion=crearUsuarioNuevo">Crear un usuario</a>
         </form>
     </div>
+    <br>
+    <br>
+
+
 </div>
 </body>
 
