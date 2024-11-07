@@ -8,7 +8,8 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(servletNames = {"MovieServlet"})
+@WebFilter(servletNames = {"MovieServlet?accion=editar"})
+//@WebFilter(urlPatterns = "/movie?accion=editar")
 public class MoviesInterceptor implements Filter {
 
     @Override
@@ -19,7 +20,7 @@ public class MoviesInterceptor implements Filter {
         System.out.println("Estoy en MoviesInterceptor");
 
         HttpSession session = httpRequest.getSession(false);
-        boolean loggedIn = (session != null && session.getAttribute("user") != null);
+        boolean loggedIn = (session != null && session.getAttribute("email") != null);
 
         // Si no está autenticado, redirigir a la página de inicio de sesión
         if (!loggedIn) {

@@ -16,7 +16,7 @@
 <%
     String name = (String) request.getSession().getAttribute("name");
     String email = (String) request.getSession().getAttribute("email");
-    String contrasena = (String) request.getSession().getAttribute("contrasena");
+
 
     if (name != null) {
 %>
@@ -25,8 +25,10 @@
     </p>
     <p>Email: <%= email %>
     </p>
-    <p>contrasena es: <%= contrasena %>
-    </p>
+
+</div>
+<div>
+    <a> Cerrar Session. Falta implementar logica</a>
 </div>
 <%
     }
@@ -57,7 +59,8 @@
         <td><%= movie.getYear() %>
         </td>
         <td>
-            <a href="?accion=editar&id=<%= movie.getId() %>">Editar</a>
+            <a href="editar?accion=editarPelicula&id=<%= movie.getId() %>">Editar</a>
+
             <a href="?accion=eliminar&id=<%= movie.getId() %>">Remove</a>
         </td>
     </tr>
