@@ -6,33 +6,28 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import principal.hellodia24.Importante.Modelo.Usuario;
-
 import principal.hellodia24.Importante.Service.UsuarioService;
 
 import java.io.IOException;
 
 @WebServlet(
-        name = "crearUsuarioServlet",
-        urlPatterns = "/usuario"
+        name = "UsuarioServletLogin",
+        urlPatterns = "/usuarioLogin"
 )
-public class UsuarioServlet extends HttpServlet {
+public class UsuarioServletLogin extends HttpServlet {
     private UsuarioService usuarioService = new UsuarioService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Muestra el formulario para crear usuario
+
         String action = request.getParameter("accion");
 
         if ("IniciarSesion".equals(action)) {
+            // Muestra el formulario para iniciar sesion
             RequestDispatcher dispatcher = request.getRequestDispatcher(
                     "/WEB-INF/login-user.jsp");
-            dispatcher.forward(request, response);
-        } else if ("crearUsuarioNuevo".equals(action)) {
-            RequestDispatcher dispatcher = request.getRequestDispatcher(
-                    "/WEB-INF/create-user.jsp");
             dispatcher.forward(request, response);
         }
 
@@ -44,28 +39,7 @@ public class UsuarioServlet extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("accion");
 
-        if ("FormulariocrearUsuario".equals(action)) {
-            String name = request.getParameter("txtName");
-            String email = request.getParameter("txtEmail");
-            String password = request.getParameter("txtPassword");
-
-            Usuario usuario = new Usuario();
-
-            usuario.setNombre(name);
-            usuario.setEmail(email);
-            // cirframos la contraseña
-            String contrasenaCifrada = UsuarioService.hashPassword(password);
-            usuario.setContrasena(contrasenaCifrada); // Asegúrate de cifrar la contraseña antes de guardarla
-
-            usuarioService.crearUsuario(usuario);
-            // Guarda los datos en la sesión en lugar de la solicitud
-            // de esta forma los datos
-
-            request.getSession().setAttribute("email", email);
-
-
-            response.sendRedirect("movie"); // Redirige al listado de Peliculas
-        } else if ("IniciarSesion".equals(action)) {
+         if ("IniciarSesion".equals(action)) {
             // Obtenemos los parámetros del formulario de inicio de sesión
             String email = request.getParameter("txtEmail");
             String contrasenaSinCifrar = request.getParameter("txtPassword");
@@ -107,7 +81,7 @@ public class UsuarioServlet extends HttpServlet {
             request.getSession().setAttribute("contrasena", usuario.getContrasena());
 
             // Redirigimos al listado de Peliculas
-            response.sendRedirect("movie");
+            response.sendRedirect("litarTodasPeliculas");
 
 
         }

@@ -42,7 +42,7 @@
             }
         %>
 
-        <form action="usuario?accion=IniciarSesion" method="post">
+        <form action="usuarioLogin?accion=IniciarSesion" method="post">
             Introduce tu Email:<br/>
             <input
                     class="form-control"
@@ -67,7 +67,7 @@
             />
             <br/>
             <br/>
-            <a href="usuario?accion=crearUsuarioNuevo">Crear un usuario</a>
+            <a href="crearUsuario?accion=crearUsuarioNuevo">Crear un usuario</a>
         </form>
     </div>
     <br>

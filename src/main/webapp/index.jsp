@@ -11,16 +11,19 @@
 
 <div>
 
-    <%--    Creo que deberia ir al MovieSERVLET --%>
+
     <%--    tengo q mirar el patron de diseño Interceptor--%>
     <br>
-    <a href="movie">Listar Peliculas</a>
+    <a href="litarTodasPeliculas">Listar Peliculas</a>
     <br>
     <br>
-    <a href="usuario?accion=crearUsuarioNuevo">Crear un usuario</a>
+<%--        Si quiero solo puedo poner  -> href="crearUsuario" como lo he puesto abajo
+en el href="usuarioLogin"
+pero lo pongo asi para que recuerdes que le puedes pasar parametros en un link--%>
+    <a href="crearUsuario?accion=crearUsuarioNuevo">Crear un usuario</a>
     <br>
     <br>
-    <a href="movie?accion=IniciarSesion">Iniciar Sesión</a>
+    <a href="usuarioLogin">Iniciar Sesión</a>
     <br>
     <br>
 </div>

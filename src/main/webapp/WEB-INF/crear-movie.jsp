@@ -14,12 +14,12 @@
 <div class="container">
     <div class="col-lg-6">
 
-<%--        No se puede acceder a la carperta WEB-INF, solo se puede acceder aqui con un Serlet--%>
+        <%--        No se puede acceder a la carperta WEB-INF, solo se puede acceder aqui con un Serlet--%>
         <h1>Crear una Película</h1>
 
-        <form action="movie?accion=crearPeliculaNueva" method="post">
+        <form action="crear?accion=crearPeliculaNueva" method="post">
             Título:<br>
-            <input class="form-control" type="text" name="txtTitle"  required><br>
+            <input class="form-control" type="text" name="txtTitle" required><br>
 
             Descripción: <br>
             <input class="form-control" type="text" name="txtDescription" required><br>
@@ -29,7 +29,7 @@
 
 
             <input class="btn btn-primary" type="submit" name="accion" value="crear">
-            <a href="movie">Regresar al listado de peliculas</a>
+            <a href="litarTodasPeliculas">Regresar al listado de peliculas</a>
         </form>
     </div>
 </div>

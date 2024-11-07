@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Estoy en movie-record!!</h1>
-<a href="movie?accion=crearPelicula">Añadir película</a>
+<a href="crear?accion=crearPelicula">Añadir película</a>
 <br>
 <br>
 
@@ -29,6 +29,8 @@
 </div>
 <div>
     <a> Cerrar Session. Falta implementar logica</a>
+    <br>
+    <a href="/AppWeb24">Regresar al index</a>
 </div>
 <%
     }
@@ -61,7 +63,7 @@
         <td>
             <a href="editar?accion=editarPelicula&id=<%= movie.getId() %>">Editar</a>
 
-            <a href="?accion=eliminar&id=<%= movie.getId() %>">Remove</a>
+            <a href="eliminar?id=<%= movie.getId() %>">Remove</a>
         </td>
     </tr>
     <%

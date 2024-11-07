@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(servletNames = {"MovieServlet?accion=editar"})
+@WebFilter(servletNames = {"MovieServletCrear", "MovieServletEditar", "MovieServletEliminar"})
 //@WebFilter(urlPatterns = "/movie?accion=editar")
 public class MoviesInterceptor implements Filter {
 
@@ -19,13 +19,14 @@ public class MoviesInterceptor implements Filter {
 
         System.out.println("Estoy en MoviesInterceptor");
 
+
         HttpSession session = httpRequest.getSession(false);
         boolean loggedIn = (session != null && session.getAttribute("email") != null);
 
         // Si no está autenticado, redirigir a la página de inicio de sesión
         if (!loggedIn) {
             // TODO cuando uso el sendRedirect() tengo que poner la ruta sin la "/"
-            httpResponse.sendRedirect("usuario?accion=IniciarSesion");
+            httpResponse.sendRedirect("usuarioLogin?accion=IniciarSesion");
         } else {
             chain.doFilter(request, response);
         }

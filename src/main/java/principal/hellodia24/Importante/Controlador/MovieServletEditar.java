@@ -30,7 +30,7 @@ public class MovieServletEditar extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("accion");
-        System.out.println("Estoy en MovieSerlet Editar !!!!");
+        System.out.println("Estoy en MovieSerlet Editar doGet!!!!");
 
         if ("editarPelicula".equals(action)) {
             // TODO
@@ -47,7 +47,7 @@ public class MovieServletEditar extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/edit-movie.jsp");
                 dispatcher.forward(request, response);
             } else {
-                response.sendRedirect("movie"); // Redirigir a la lista si la película no existe
+                response.sendRedirect("litarTodasPeliculas"); // Redirigir a la lista si la película no existe
             }
         }
 
@@ -66,7 +66,9 @@ public class MovieServletEditar extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("accion");
 
+        System.out.println("Estoy en editar serlet en el metodo doPost");
         if ("actualizarPelicula".equals(action)) {
+            System.out.println("Editar Pelicula Actualizada dentro del if");
             Long id = Long.valueOf(request.getParameter("txtId"));
             String title = request.getParameter("txtTitle");
             String description = request.getParameter("txtDescription");
@@ -75,7 +77,7 @@ public class MovieServletEditar extends HttpServlet {
             Movie updatedMovie = new Movie(id, title, description, year);
             movieService.updateMovie(updatedMovie);
 
-            response.sendRedirect("movie"); // Redirigir a la lista de películas
+            response.sendRedirect("litarTodasPeliculas"); // Redirigir a la lista de películas
         }
     }
 

@@ -18,7 +18,7 @@
 
 
 
-        <form action="usuario?accion=FormulariocrearUsuario" method="post">
+        <form action="crearUsuario?accion=FormulariocrearUsuario" method="post">
             Nombre:<br>
             <input class="form-control" type="text" name="txtName" required><br>
 

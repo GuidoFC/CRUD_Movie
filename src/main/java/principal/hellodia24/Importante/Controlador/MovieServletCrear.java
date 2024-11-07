@@ -11,86 +11,60 @@ import principal.hellodia24.Importante.Service.MovieService;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 //Esta es una anotación para decirle a Java que esta clase será un "Servlet".
 // Un servlet es básicamente una pequeña aplicación que responde a solicitudes en la web.
 @WebServlet(
 //        Nombre del Servlet
-        name = "MovieServlet",
+        name = "MovieServletCrear",
         // indica que este servlet responderá cuando alguien visite la URL /movie en el servidor.
-        urlPatterns = "/movie")
+        urlPatterns = "/crear")
 
 //
 // Declara la clase MovieServlet, que extiende HttpServlet, lo que significa que esta clase puede manejar solicitudes HTTP, como GET o POST.
-public class MovieServlet extends HttpServlet {
+public class MovieServletCrear extends HttpServlet {
     private MovieService movieService = new MovieService();
 
     //    Este méto_do doGet se ejecuta automáticamente cuando alguien hace una solicitud GET a la URL /movie
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("accion");
-        System.out.println("Estoy en MovieSerlet");
+        System.out.println("Estoy en MovieServletCrear CREAR!!! DoGet");
 
-        if ("eliminar".equals(action)) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            Optional<Movie> movie = movieService.getMovieById(id);
-            if (movie.isPresent()) {
-                movieService.removePeliculaById(id);
-                response.sendRedirect("movie"); // Refrescamos la pantalla para ver todas las pelis sin la peli eliminada
-            }
-        } else if ("crearPelicula".equals(action)) {
+        if ("crearPelicula".equals(action)) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/crear-movie.jsp");
             dispatcher.forward(request, response);
+            System.out.println("Estoy en MovieServletCrear CREAR!!! DoGet dentro del IF");
 
         } else {
             processRequest(request, response); // Mostrar la lista de películas
         }
     }
 
-    // TODO porque tenemos que crear este método processRequest y no lo hacemos
-    // direcamente desde el método doGet?
-    private void processRequest(
-            HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+ // TODO: Para que sirve el processRequest?????
+    private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Movie> listaPeliculas = movieService.getListMovieFromService();
         //
         request.setAttribute("listaPeliculas", listaPeliculas);
 
-//                    .ifPresent(s -> request.setAttribute("studentRecord", s));
-
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher(
-                "/WEB-INF/movie-record.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/movie-record.jsp");
         dispatcher.forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("accion");
-
-        if ("actualizarPelicula".equals(action)) {
-            Long id = Long.valueOf(request.getParameter("txtId"));
-            String title = request.getParameter("txtTitle");
-            String description = request.getParameter("txtDescription");
-            int year = Integer.parseInt(request.getParameter("txtYear"));
-
-            Movie updatedMovie = new Movie(id, title, description, year);
-            movieService.updateMovie(updatedMovie);
-
-            response.sendRedirect("movie"); // Redirigir a la lista de películas
-        } else if ("crearPeliculaNueva".equals(action)) {
-
+        System.out.println("Estoy en MovieSerlet CREAR!!! DoPost");
+        if ("crearPeliculaNueva".equals(action)) {
+            System.out.println("Estoy en MovieSerlet CREAR!!! DoPost dentro del IF");
             String title = request.getParameter("txtTitle");
             String description = request.getParameter("txtDescription");
             int year = Integer.parseInt(request.getParameter("txtYear"));
 
             Movie crearPelicula = new Movie(null, title, description, year);
             movieService.crearMovie(crearPelicula);
-            response.sendRedirect("movie"); // Redirigir a la lista de películas
+            response.sendRedirect("litarTodasPeliculas"); // Redirigir a la lista de películas
         }
     }
 

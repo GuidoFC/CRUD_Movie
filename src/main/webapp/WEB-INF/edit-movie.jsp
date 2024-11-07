@@ -19,7 +19,7 @@
         %>
         <h1>Editar Película</h1>
 //        Llamamos al servlet y con el método Post para editar la pelicar
-        <form action="movie?accion=actualizarPelicula" method="post">
+        <form action="editar?accion=actualizarPelicula" method="post">
             Título:<br>
             <input class="form-control" type="text" name="txtTitle" value="<%= movie.getTitle() %>"><br>
 
@@ -30,10 +30,12 @@
             <input class="form-control" type="number" name="txtYear" value="<%= movie.getYear() %>"><br>
 
 //            Escondemos el id de la pelicula para que el usuario no lo vea
+            <br>
             <input type="hidden" name="txtId" value="<%= movie.getId() %>">
 
             <input class="btn btn-primary" type="submit" name="accion" value="Actualizar">
-            <a href="movie">Regresar al listado de peliculas</a>
+            <br>
+            <a href="litarTodasPeliculas">Regresar al listado de peliculas</a>
         </form>
     </div>
 </div>
