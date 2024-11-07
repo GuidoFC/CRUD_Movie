@@ -1,14 +1,27 @@
 package principal.hellodia24.Importante.Modelo;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 
-
-
+//07/11
+// podemos usar LOMBOK { allArgsConstrcutor, Data, NoArgsConstructor
+//
+// si en esta variable Entity no decimos nada, supondra que el nombre es Movie (q es el nombre de la clase)
+@Entity
+// nombre de la tabla de mi BD
+@Table(name = "movies")
+// Tengo que buscar como relacionar las tablas
+//@ManyToOne
 public class Movie {
+    // especificar el ID, y le decimos que es Autoincrement
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+//    Si el nombre de la columna no coincide con el atributo tenemos en esta clase tenemos q que usar @Column
+//    @Column(name = "titol")
     private String title;
     private String description;
     private Integer year;

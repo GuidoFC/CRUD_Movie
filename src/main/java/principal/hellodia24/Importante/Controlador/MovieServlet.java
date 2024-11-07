@@ -31,6 +31,7 @@ public class MovieServlet extends HttpServlet {
 protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
     String action = request.getParameter("accion");
+    System.out.println("Estoy en MovieSerlet");
 
     if ("editar".equals(action)) {
         // TODO

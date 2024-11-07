@@ -60,7 +60,7 @@ public class UsuarioServlet extends HttpServlet {
             usuarioService.crearUsuario(usuario);
             // Guarda los datos en la sesión en lugar de la solicitud
             // de esta forma los datos
-            request.getSession().setAttribute("name", name);
+
             request.getSession().setAttribute("email", email);
 
 
@@ -79,6 +79,11 @@ public class UsuarioServlet extends HttpServlet {
                 // Reenviamos la solicitud a login-user.jsp
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login-user.jsp");
                 dispatcher.forward(request, response);
+
+                // Guarda los datos en la sesión en lugar de la solicitud
+                // de esta forma los datos
+                request.getSession().setAttribute("email", email);
+
                 return; // Terminamos la ejecución
             }
 
@@ -96,13 +101,14 @@ public class UsuarioServlet extends HttpServlet {
                 return; // Terminamos la ejecución
             }
 
-            // Si todo es correcto, guardamos la información del usuario en la sesión
+            // Si to_do es correcto, guardamos la información del usuario en la sesión
             request.getSession().setAttribute("name", usuario.getNombre());
             request.getSession().setAttribute("email", usuario.getEmail());
             request.getSession().setAttribute("contrasena", usuario.getContrasena());
 
             // Redirigimos al listado de Peliculas
             response.sendRedirect("movie");
+
 
         }
     }
