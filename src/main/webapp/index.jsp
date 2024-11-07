@@ -17,8 +17,7 @@
     <a href="litarTodasPeliculas">Listar Peliculas</a>
     <br>
     <br>
-<%--        Si quiero solo puedo poner  -> href="crearUsuario" como lo he puesto abajo
-en el href="usuarioLogin"
+<%--TODO Recuerda: Si quiero solo puedo poner  -> href="crearUsuario" como lo he puesto abajo en el href="usuarioLogin"
 pero lo pongo asi para que recuerdes que le puedes pasar parametros en un link--%>
     <a href="crearUsuario?accion=crearUsuarioNuevo">Crear un usuario</a>
     <br>

@@ -22,6 +22,8 @@ public class MoviesInterceptor implements Filter {
 
         HttpSession session = httpRequest.getSession(false);
         boolean loggedIn = (session != null && session.getAttribute("email") != null);
+        String emailCapturado = (String) session.getAttribute("email");
+        System.out.println("El email capturado es " + emailCapturado);
 
         // Si no está autenticado, redirigir a la página de inicio de sesión
         if (!loggedIn) {

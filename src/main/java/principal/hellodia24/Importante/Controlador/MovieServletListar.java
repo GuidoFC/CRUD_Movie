@@ -31,6 +31,8 @@ public class MovieServletListar extends HttpServlet {
         String action = request.getParameter("accion");
         System.out.println("Estoy en MovieSerlet Listar doGet");
 
+
+
         processRequest(request, response); // Mostrar la lista de películas
 
     }
